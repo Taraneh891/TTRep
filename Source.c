@@ -8,7 +8,9 @@ struct Node {
 	struct Node* prev;
 };
 
-struct Node* current; // global variable - pointer to current node.
+// global variable
+struct Node* current;  //pointer to current node
+struct Node* head;	   //pointer to head of list
 
 //Creates a new Node and returns pointer to it. 
 struct Node* GetNewNode(int val) {
@@ -20,8 +22,8 @@ struct Node* GetNewNode(int val) {
 }
 
 //Prints all the elements in linked list 
-void Print() {
-	struct Node* temp = current;
+void PrintList(struct Node* head) {
+	struct Node* temp = head;
 	printf("Before Sorting: ");
 	while (temp != NULL) {
 		printf("%d ", temp->value);
@@ -53,6 +55,7 @@ int main(int argc, char *argv[]) {
 			{
 				NewNode->prev = 0;
 				current = NewNode;
+				head = NewNode;		//set the head pointer
 			}
 		}
 		else
@@ -62,6 +65,6 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	printf("End of List\n");
-	Print();
+	PrintList(head);
 	return 0;
 }
